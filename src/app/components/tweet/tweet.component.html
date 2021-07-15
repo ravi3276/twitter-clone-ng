@@ -1,0 +1,55 @@
+<ion-row class="wrapper">
+<ion-col size="2">
+  <ion-avatar>
+    <img [src]="tweet.img" alt="">
+  </ion-avatar>
+</ion-col>
+
+<ion-col size="10">
+        <ion-row class="tweet__header">
+            <ion-col size="12">
+              <span class="username">{{tweet.username}}</span>
+              <span class="handle">@{{tweet.handle}}</span>
+              <span class="handle">{{tweet.date*1000 | date:'shortTime'}}</span>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <div [innerHtml]="tweet.text"></div>
+          <img class="tweet__image" [src]="tweet.attachment" *ngIf="tweet.attachment" alt="">
+         </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-start">
+          <ion-col>
+            <ion-button fill="clear" size="small" color="medium">
+              <ion-icon slot="start" name="chatbubble-outline"></ion-icon>
+              {{tweet.response}}
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button (click)="tweet.retweet = !tweet.retweet" [color]="tweet.retweet? 'medium':'primary'" size="small" fill="clear">
+              <ion-icon slot="start" name="repeat-outline"></ion-icon>
+              {{tweet.retweets}}
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button (click)="tweet.liked = !tweet.liked" [color]="tweet.liked? 'medium':'primary'" size="small" fill="clear">
+              <ion-icon slot="start" name="heart-outline"></ion-icon>
+              {{tweet.like}}
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button size="small" color="medium" fill="clear">
+              <ion-icon slot="start" name="share-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+</ion-col>
+</ion-row>
+
+
